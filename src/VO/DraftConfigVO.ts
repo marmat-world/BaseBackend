@@ -1,0 +1,14 @@
+import { ApiProperty } from "@nestjs/swagger";
+
+export class DraftConfigVO {
+  @ApiProperty({ example: "const config = {}", description: "配置数据" })
+  private draftConfig!: string;
+
+  public setDraftConfig(draftConfig: string): void {
+    this.draftConfig = "const config = " + draftConfig;
+  }
+
+  public getDraftConfig(): string {
+    return this.draftConfig;
+  }
+}
