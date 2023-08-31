@@ -42,6 +42,16 @@ export const ApiDataResponse = <TModel extends Type<any>>({
 
   //const model = Array.isArray(type) ? type[0] : type
 
+  const pageInfo = isPage ? {
+                    type: 'object',
+                    properties: {
+                      page_size: { type: 'number', default: 100 },
+                      total: { type: 'number', default: 200 },
+                      current_page: { type: 'number', default: 1 },
+                      page_count: { type: 'number', default: 10 },
+                   },
+              } : { type: 'null', default: null } 
+
   return applyDecorators(
     ApiExtraModels(type),
     ApiResponse({
@@ -53,15 +63,7 @@ export const ApiDataResponse = <TModel extends Type<any>>({
             properties: {
               //response: prop,
               data,
-              pageInfo: isPage ? {
-                type: 'object',
-                properties: {
-                  page_size: { type: 'number', default: 100 },
-                  total: { type: 'number', default: 200 },
-                  current_page: { type: 'number', default: 1 },
-                  page_count: { type: 'number', default: 10 },
-                },
-              } : null,
+              pageInfo,
               status: { type: 'number', default: status ?? 200 },
               message: { type: 'string', default: message ?? '请求成功' } 
             } 
