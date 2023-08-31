@@ -1,7 +1,6 @@
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ResultVO } from "./VO/ResultVO";
 import { ValidationPipe } from "./pipe/projects.pipe"
 //import { ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from './filters/http-exception/http-exception.filter';
@@ -21,7 +20,7 @@ async function bootstrap() {
         .addTag('phantom')
         .build();
       const document = SwaggerModule.createDocument(app, config,{
-        extraModels: [ResultVO]
+        extraModels: []
       });
       SwaggerModule.setup('api', app, document);
       
