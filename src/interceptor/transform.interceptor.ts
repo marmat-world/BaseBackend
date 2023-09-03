@@ -32,11 +32,11 @@ import {
         map(result => {
           const { pageInfo,data,message } = result;
           return {
-            pageInfo: pageInfo?pageInfo:{},
+            pageInfo: pageInfo ?? null,
             statusCode: 200,
             status: "ok",
             message: message ?? '请求成功',
-            data: pageInfo?data:result,
+            data: data ?? null,
           };
         }),
       );
