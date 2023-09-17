@@ -58,7 +58,7 @@ export const ApiDataResponse = <TModel extends Type<any>>({
       status,
       schema: {
         allOf: [
-          { $ref: getSchemaPath(ResOp) },
+          //{ $ref: getSchemaPath(ResOp) },
           {
             properties: {
               //response: prop,

@@ -4,5 +4,6 @@ export enum ApiErrorCode {
   
     USER_ID_INVALID = 10001, // 用户id无效
     PARAM_ERROR = 40001,
-    OPERATE_ERROR = 40002
+    OPERATE_ERROR = 40002,
+    TOKEN_INVALID = 40003
   }
