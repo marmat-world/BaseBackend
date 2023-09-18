@@ -8,12 +8,16 @@ import { TransformInterceptor } from './common/interceptor/transform.interceptor
 import { GlobalModule } from './customprovide/modules';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import ModuleData from "@/src/module"
-import { ConfigService } from '@nestjs/config';
-
+import { ConfigService, ConfigModule } from '@nestjs/config';
+import configuration from '@/src/common/config/configuration';
 const entitiesPaths = [join(__dirname, '.', '**', '*.entity.{ts,js}')]
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      load: [configuration],
+      isGlobal: true,
+    }),
     TypeOrmModule.forRootAsync({
       useFactory: async (config: ConfigService) => ({
         type: 'mysql',
