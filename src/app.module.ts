@@ -7,7 +7,7 @@ import { DevtoolsModule } from "@nestjs/devtools-integration"
 import { TransformInterceptor } from './common/interceptor/transform.interceptor'
 import { GlobalModule } from './customprovide/modules';
 import { APP_INTERCEPTOR } from '@nestjs/core';
-import ModuleData from "@/src/module"
+import { IndexModule } from "@/src/module/index"
 import { ConfigService, ConfigModule } from '@nestjs/config';
 import configuration from '@/src/common/config/configuration';
 const entitiesPaths = [join(__dirname, '.', '**', '*.entity.{ts,js}')]
@@ -38,7 +38,7 @@ const entitiesPaths = [join(__dirname, '.', '**', '*.entity.{ts,js}')]
       http: process.env.NODE_ENV !== 'production',
     }),
     GlobalModule,
-    ...ModuleData
+    IndexModule.forRoot({ folder: join(__dirname,'.','module')})
   ],
   controllers: [AppController],
   providers: [AppService,{
