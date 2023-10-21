@@ -19,7 +19,7 @@ export class AuthService {
     this.userService.update(userInfo.id,{ last_login: lastLogin })
     userInfo.last_login = lastLogin
     this.redisService.getRedis().setex(tokenInfo.token,86400,userInfo.id)
-    return { data: { user_info: userInfo, token_info: tokenInfo } }
+    return { data: { userInfo, tokenInfo } }
   }
 
   createToken({ id }) {
