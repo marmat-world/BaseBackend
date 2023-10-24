@@ -14,9 +14,9 @@ import {
   }
   type returnData = {
     pageInfo?:{
-      current: number;
-      pageSize:number;
-      pageCount: number;
+      current_page: number;
+      page_size:number;
+      page_count: number;
       total:number;
     }
     data?:any
