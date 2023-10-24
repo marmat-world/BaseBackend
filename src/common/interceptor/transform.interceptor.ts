@@ -14,8 +14,10 @@ import {
   }
   type returnData = {
     pageInfo?:{
-      page:number,
-      total:number,
+      current: number;
+      pageSize:number;
+      pageCount: number;
+      total:number;
     }
     data?:any
     message?: string,
