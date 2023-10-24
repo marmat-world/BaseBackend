@@ -8,12 +8,12 @@ export class PaginationDto {
     @ApiProperty({ description: '每页数量' })
     @IsNumber({},{ message: 'pageSize必须为数字', context: { errorCode: ApiErrorCode.PARAM_ERROR} })
     @Transform(({ value }) => Number(value))
-    page_size: number = 10
+    pageSize: number = 10
 
     @ApiProperty({ description: '当前页' })
     @IsNumber({},{ message: 'current必须为数字', context: { errorCode: ApiErrorCode.PARAM_ERROR} })
     @Transform(({ value }) => Number(value))
     @Min(1,{ message: 'current最小值为1', context: { errorCode: ApiErrorCode.PARAM_ERROR} })
-    current_page: number = 1
+    current: number = 1
 
 }
