@@ -14,7 +14,7 @@ export class AuthService {
 
   async login(username) {
     const userInfo = await this.userService.findUserInfo({ username });
-    const tokenInfo = this.createToken({ id: userInfo.id});
+    const tokenInfo = this.createToken(userInfo);
     const lastLogin = moment().valueOf();
     this.userService.update(userInfo.id,{ last_login: lastLogin })
     userInfo.last_login = lastLogin
@@ -22,8 +22,8 @@ export class AuthService {
     return { data: { userInfo, tokenInfo } }
   }
 
-  createToken({ id }) {
-    const token = this.jwtService.sign({ id });
+  createToken(user) {
+    const token = this.jwtService.sign({ ...user, time: Date.now() });
     return { token }
   }
 
