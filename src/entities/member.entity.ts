@@ -2,7 +2,7 @@ import { Entity, Column, BeforeInsert} from 'typeorm';
 import { Base } from '@/src/entities/base.entity'
 import * as bcrypt from 'bcryptjs'
 @Entity()
-export class User extends Base{
+export class Member extends Base{
 
   @Column({ type: 'varchar', length: 20, default: '', comment: '用户名'})
   username: string
